@@ -1,0 +1,39 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://Models/water_001.material" type="Material" id=1]
+[ext_resource path="res://Models/PrototypeBoat.fbx" type="PackedScene" id=2]
+[ext_resource path="res://Scenes/PlayerCharacterController.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Models/Sky-2.hdr" type="Texture" id=4]
+
+[sub_resource type="BoxShape" id=1]
+
+[sub_resource type="PanoramaSky" id=2]
+panorama = ExtResource( 4 )
+
+[sub_resource type="Environment" id=3]
+background_mode = 2
+background_sky = SubResource( 2 )
+background_energy = 0.5
+tonemap_mode = 3
+tonemap_exposure = 1.5
+tonemap_white = 4.0
+
+[node name="Spatial" type="Spatial"]
+
+[node name="StaticBody" type="StaticBody" parent="."]
+transform = Transform( 150, 0, 0, 0, 1, 0, 0, 0, 150, 0, 0, 0 )
+
+[node name="CollisionShape" type="CollisionShape" parent="StaticBody"]
+shape = SubResource( 1 )
+
+[node name="CSGBox" type="CSGBox" parent="StaticBody"]
+material_override = ExtResource( 1 )
+
+[node name="PrototypeBoat" parent="." instance=ExtResource( 2 )]
+transform = Transform( 10, 0, 0, 0, 22.845, 0, 0, 0, 11.599, 18.5595, 41.3389, 65.6254 )
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource( 3 )
+
+[node name="Player" parent="." instance=ExtResource( 3 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -56.4324, 20.0729, 0 )

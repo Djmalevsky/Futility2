@@ -1,0 +1,108 @@
+[gd_scene load_steps=18 format=2]
+
+[ext_resource path="res://Scenes/PlayerCharacterController.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Enemy1.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Desert.jpeg" type="Texture" id=3]
+[ext_resource path="res://FBX/aloe.fbx" type="PackedScene" id=4]
+[ext_resource path="res://FBX/cactus02.fbx" type="PackedScene" id=5]
+[ext_resource path="res://Models/Sky-1.hdr" type="Texture" id=6]
+[ext_resource path="res://FBX/cactus01.fbx" type="PackedScene" id=7]
+[ext_resource path="res://Scenes/DesertTemple.fbx" type="PackedScene" id=8]
+[ext_resource path="res://WorldEnvironment.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Scenes/temple.fbx" type="PackedScene" id=10]
+[ext_resource path="res://Scenes/MainScene.gd" type="Script" id=24]
+
+[sub_resource type="SpatialMaterial" id=1]
+albedo_color = Color( 1, 0.980392, 0.980392, 1 )
+albedo_texture = ExtResource( 3 )
+metallic_texture = ExtResource( 3 )
+
+[sub_resource type="BoxShape" id=2]
+
+[sub_resource type="BoxShape" id=3]
+extents = Vector3( 0.629198, 0.403624, 0.101582 )
+
+[sub_resource type="BoxShape" id=4]
+extents = Vector3( 0.313444, 1, 0.455039 )
+
+[sub_resource type="PanoramaSky" id=5]
+panorama = ExtResource( 6 )
+
+[sub_resource type="Environment" id=6]
+background_mode = 2
+background_sky = SubResource( 5 )
+ambient_light_color = Color( 0.952941, 0.576471, 0.576471, 1 )
+ambient_light_energy = 1.2
+tonemap_mode = 3
+tonemap_white = 4.0
+
+[node name="Spatial" type="Spatial"]
+script = ExtResource( 24 )
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="WorldEnvironment" parent="." instance=ExtResource( 9 )]
+
+[node name="Player" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -43.5501, 3.21669, -1.10346 )
+
+[node name="StaticBody" type="StaticBody" parent="."]
+transform = Transform( 126.975, 0, 0, 0, 1, 0, 0, 0, 123.11, 0, 0, 16.7201 )
+
+[node name="CSGBox" type="CSGBox" parent="StaticBody"]
+material = SubResource( 1 )
+
+[node name="CollisionShape" type="CollisionShape" parent="StaticBody"]
+shape = SubResource( 2 )
+
+[node name="Enemy1" parent="." instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 8.19847, 2.05265, 3 )
+
+[node name="Enemy2" parent="." instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 17.533, 2.18357, 3 )
+
+[node name="Enemy3" parent="." instance=ExtResource( 2 )]
+transform = Transform( 0.964322, 0, -0.264732, 0, 1, 0, 0.264732, 0, 0.964322, -34.0088, 2.18357, 37.535 )
+
+[node name="Enemy4" parent="." instance=ExtResource( 2 )]
+transform = Transform( 0.964322, 0, -0.264732, 0, 1, 0, 0.264732, 0, 0.964322, -34.0088, 2.18357, 75.0059 )
+
+[node name="Enemy5" parent="." instance=ExtResource( 2 )]
+transform = Transform( 0.964322, 0, -0.264732, 0, 1, 0, 0.264732, 0, 0.964322, -81.2952, 2.18357, 75.0059 )
+
+[node name="aloe" parent="." instance=ExtResource( 4 )]
+transform = Transform( 5, 0, 0, 0, 5, 0, 0, 0, 5, -52.725, 1, -31.4515 )
+
+[node name="aloe2" parent="." instance=ExtResource( 4 )]
+transform = Transform( 5, 0, 0, 0, 5, 0, 0, 0, 5, -52.725, 1, 15.5907 )
+
+[node name="cactus01" parent="." instance=ExtResource( 7 )]
+transform = Transform( 5, 0, 0, 0, 5, 0, 0, 0, 5, 22.797, 0.691381, 38.8119 )
+
+[node name="StaticBody" type="StaticBody" parent="cactus01"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.062, 0 )
+
+[node name="CollisionShape" type="CollisionShape" parent="cactus01/StaticBody"]
+transform = Transform( 0.5, 0, 0, 0, 1, 0, 0, 0, 0.5, -0.00580359, 0.408548, 0.00608444 )
+shape = SubResource( 3 )
+
+[node name="cactus02" parent="." instance=ExtResource( 5 )]
+transform = Transform( 5, 0, 0, 0, 5, 0, 0, 0, 5, 1.225, 0.935666, 58.941 )
+
+[node name="StaticBody2" type="StaticBody" parent="cactus02"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.1, 0 )
+
+[node name="CollisionShape" type="CollisionShape" parent="cactus02/StaticBody2"]
+transform = Transform( 0.5, 0, 0, 0, 1, 0, 0, 0, 0.5, -0.00580359, 1.1237, 0.00608444 )
+shape = SubResource( 4 )
+
+[node name="DesertTemple" parent="." instance=ExtResource( 8 )]
+transform = Transform( 3, 0, 0, 0, 3, 0, 0, 0, 3, -84.24, 9.1, 70.171 )
+
+[node name="DeathCam" type="Camera" parent="."]
+transform = Transform( -0.275822, -0.13874, 0.951143, 0, 0.989528, 0.144339, -0.961209, 0.0398118, -0.272934, 18.754, 19.174, 45.91 )
+environment = SubResource( 6 )
+far = 500.0
+
+[node name="temple" parent="." instance=ExtResource( 10 )]
+transform = Transform( 5, 0, 0, 0, 5, 0, 0, 0, 5, 39.7494, 3.77409, -36.5228 )

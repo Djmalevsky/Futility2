@@ -1,0 +1,8 @@
+[gd_resource type="ParticlesMaterial" format=2]
+
+[resource]
+flag_align_y = true
+flag_disable_z = true
+orbit_velocity = 0.1
+orbit_velocity_random = 0.1
+color = Color( 1, 0, 0, 1 )

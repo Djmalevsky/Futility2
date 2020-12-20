@@ -1,0 +1,45 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://textures/TitleScreenFontNew.tres" type="DynamicFont" id=1]
+[ext_resource path="res://Models/VersionFont.tres" type="DynamicFont" id=2]
+[ext_resource path="res://Scenes/OptionsMenu.gd" type="Script" id=3]
+
+[node name="TheMenuOptions" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Volume" type="HScrollBar" parent="."]
+margin_left = 493.0
+margin_top = 100.0
+margin_right = 793.0
+margin_bottom = 125.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VolumeLabel" type="Label" parent="Volume"]
+margin_left = 4.68225
+margin_top = -34.4611
+margin_right = 44.6823
+margin_bottom = -3.46107
+custom_fonts/font = ExtResource( 2 )
+text = "Volume:"
+
+[node name="OptionsMenuLabel" type="Label" parent="."]
+margin_left = 461.0
+margin_right = 819.0
+margin_bottom = 60.0
+custom_fonts/font = ExtResource( 1 )
+text = "Options Menu"
+[connection signal="changed" from="Volume" to="." method="_on_Volume_changed"]

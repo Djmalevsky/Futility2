@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Zombie.material" type="Material" id=1]
+[ext_resource path="res://ZombieFixed.fbx" type="PackedScene" id=2]
+
+
+[node name="Zombie" instance=ExtResource( 2 )]
+
+[node name="Zombie2" parent="." index="1"]
+material/0 = ExtResource( 1 )

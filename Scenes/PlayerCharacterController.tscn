@@ -1,0 +1,850 @@
+[gd_scene load_steps=44 format=2]
+
+[ext_resource path="res://Scenes/PlayerCharacterController.gd" type="Script" id=1]
+[ext_resource path="res://ThumbPad.tscn" type="PackedScene" id=2]
+[ext_resource path="res://FightingButtons.tscn" type="PackedScene" id=3]
+[ext_resource path="res://HealthBar.tscn" type="PackedScene" id=4]
+[ext_resource path="res://AmmoControl.tscn" type="PackedScene" id=5]
+[ext_resource path="res://arm1Pose.fbx" type="PackedScene" id=6]
+[ext_resource path="res://Models/machinegun.dae" type="PackedScene" id=7]
+[ext_resource path="res://MuzzleFlash.tscn" type="PackedScene" id=8]
+[ext_resource path="res://reload.ogg" type="AudioStream" id=9]
+[ext_resource path="res://Models/jumppp22.ogg" type="AudioStream" id=10]
+[ext_resource path="res://bruhbruh.wav" type="AudioStream" id=11]
+[ext_resource path="res://lmg_fire01.wav" type="AudioStream" id=12]
+[ext_resource path="res://CrossHair.tscn" type="PackedScene" id=13]
+[ext_resource path="res://Scenes/zombie-9.wav" type="AudioStream" id=14]
+[ext_resource path="res://slightscream-01.wav" type="AudioStream" id=15]
+[ext_resource path="res://textures/TitleScreenFontNew.tres" type="DynamicFont" id=16]
+[ext_resource path="res://textures/lit.png" type="Texture" id=17]
+[ext_resource path="res://textures/norm.png" type="Texture" id=18]
+[ext_resource path="res://Models/b_Pause1.png" type="Texture" id=19]
+[ext_resource path="res://Models/Pistol.fbx" type="PackedScene" id=20]
+[ext_resource path="res://Models/Knife.fbx" type="PackedScene" id=21]
+[ext_resource path="res://Scenes/swosh-01.wav" type="AudioStream" id=22]
+[ext_resource path="res://Models/VersionFont.tres" type="DynamicFont" id=23]
+[ext_resource path="res://366215__piggimon__alien-screeching.wav" type="AudioStream" id=24]
+
+[sub_resource type="Animation" id=1]
+resource_name = "PlayerReload"
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5, 1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector3( -3, -180, 0 ), Vector3( 30, -180.006, 0 ), Vector3( -3, -180, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:translation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.5, 1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector3( 0.1, -0.06, -0.112 ), Vector3( 0.1, -0.09, -0.112 ), Vector3( 0.1, -0.06, -0.112 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("../../..:DoneReloading")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 1 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("../../..:Decrease")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 1 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("../../..:Shoot")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("../../..:Reloading")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 1 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/6/type = "audio"
+tracks/6/path = NodePath("../../../GunReload")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"clips": [  ],
+"times": PoolRealArray(  )
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("../../../GunReload:playing")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+
+[sub_resource type="Animation" id=2]
+resource_name = "FireGun"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/path = NodePath("../../..:Shoot")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/1/type = "audio"
+tracks/1/path = NodePath("../../../GunShot")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"clips": [  ],
+"times": PoolRealArray(  )
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("../../../GunShot:playing")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.6 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("MuzzleFlash:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+
+[sub_resource type="Animation" id=3]
+resource_name = "ZoomIn"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:translation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector3( 0.1, -0.06, -0.112 ), Vector3( 0, -0.06, -0.112 ) ]
+}
+
+[sub_resource type="Animation" id=4]
+resource_name = "ZoomIn"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:translation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector3( 0.1, -0.06, -0.112 ), Vector3( 0, -0.06, -0.112 ) ]
+}
+
+[sub_resource type="Animation" id=5]
+resource_name = "ZoomOut"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:translation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector3( 0, -0.06, -0.112 ), Vector3( 0.1, -0.06, -0.112 ) ]
+}
+
+[sub_resource type="Animation" id=6]
+resource_name = "KnifeAnimation"
+length = 0.8
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:translation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.3, 0.6, 0.8 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector3( 0.07, -0.017, -0.087 ), Vector3( 0.07, 0.03, -0.074 ), Vector3( 0.07, -0.04, -0.1 ), Vector3( 0.07, -0.017, -0.087 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:rotation_degrees")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.3, 0.6, 0.8 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector3( 0, -6.141, 0 ), Vector3( 50, -6.141, 0 ), Vector3( -30, -6.141, -2 ), Vector3( 0, -6.141, 0 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("../../..:KnifeSwingFinished")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.8 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/3/type = "audio"
+tracks/3/path = NodePath("../../../Swoosh")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"clips": [  ],
+"times": PoolRealArray(  )
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("../../../Swoosh:playing")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 0.8 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+
+[sub_resource type="Animation" id=7]
+resource_name = "PistolReload"
+length = 0.7
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.3, 0.7 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector3( -3, -180, 0 ), Vector3( 20, -180, 0 ), Vector3( -3, -180, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:translation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.3, 0.7 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector3( 0.083, -0.06, -0.094 ), Vector3( 0.083, -0.09, -0.094 ), Vector3( 0.083, -0.06, -0.094 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("../../..:DoneReloadingPistol")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0.7 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("../../..:DecreasePistol")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0.7 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("../../..:ReloadingPistol")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0.7 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/5/type = "audio"
+tracks/5/path = NodePath("../../../GunReload")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"clips": [  ],
+"times": PoolRealArray(  )
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("../../../GunReload:playing")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0, 0.7 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+
+[sub_resource type="Animation" id=8]
+resource_name = "FirePistol"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/path = NodePath("MuzzleFlashPistol:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("../../../GunShot:playing")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+
+[sub_resource type="Animation" id=9]
+resource_name = "PistolReload"
+
+[sub_resource type="Animation" id=10]
+resource_name = "FirePistol"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/path = NodePath("MuzzleFlashPistol:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("../../../GunShot:playing")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+
+[sub_resource type="Animation" id=11]
+resource_name = "PistolReload"
+
+[sub_resource type="Animation" id=12]
+resource_name = "ZoomInPis"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:translation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector3( 0.083, -0.06, -0.094 ), Vector3( 0, -0.06, -0.094 ) ]
+}
+
+[sub_resource type="Animation" id=13]
+resource_name = "FirePistol"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/path = NodePath("MuzzleFlashPistol:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("../../../GunShot:playing")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+
+[sub_resource type="Animation" id=14]
+resource_name = "PistolReload"
+
+[sub_resource type="Animation" id=15]
+resource_name = "ZoomOutPis"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:translation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector3( 0, -0.06, -0.094 ), Vector3( 0.083, -0.06, -0.094 ) ]
+}
+
+[sub_resource type="CapsuleShape" id=16]
+
+[sub_resource type="CapsuleMesh" id=17]
+
+[sub_resource type="Animation" id=18]
+length = 0.5
+tracks/0/type = "audio"
+tracks/0/path = NodePath("jumpS")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"clips": [  ],
+"times": PoolRealArray(  )
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("jumpS:playing")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+
+[sub_resource type="CapsuleShape" id=19]
+
+[node name="Player" type="KinematicBody" groups=[
+"Player",
+]]
+script = ExtResource( 1 )
+DoneReloadingPistol = true
+KnifeSwingFinished = true
+DoneReloading = true
+Shoot = true
+
+[node name="Head" type="Spatial" parent="."]
+
+[node name="Camera" type="Camera" parent="Head"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0 )
+far = 10000.0
+
+[node name="MarginContainer2" parent="Head/Camera" instance=ExtResource( 2 )]
+
+[node name="MarginContainer" parent="Head/Camera" instance=ExtResource( 3 )]
+
+[node name="Control" parent="Head/Camera" instance=ExtResource( 4 )]
+
+[node name="AmmoControl" parent="Head/Camera" instance=ExtResource( 5 )]
+
+[node name="machinegun" parent="Head/Camera" instance=ExtResource( 7 )]
+transform = Transform( -0.1, -4.57536e-10, 8.7303e-09, 0, 0.099863, 0.0052336, -8.74228e-09, 0.0052336, -0.099863, 0.1, -0.06, -0.112 )
+visible = false
+
+[node name="arm1Pose" parent="Head/Camera/machinegun" instance=ExtResource( 6 )]
+transform = Transform( 0.139079, 4.44089e-16, -0.0749181, -4.65661e-10, 0.15, -3.72529e-09, 0.0561886, 9.31323e-10, 0.185438, -0.14, 0.00187588, 0.0332091 )
+
+[node name="MuzzleFlash" parent="Head/Camera/machinegun" instance=ExtResource( 8 )]
+
+[node name="AnimationPlayer2" type="AnimationPlayer" parent="Head/Camera/machinegun"]
+anims/PlayerReload = SubResource( 1 )
+
+[node name="AnimationPlayer3" type="AnimationPlayer" parent="Head/Camera/machinegun"]
+anims/FireGun = SubResource( 2 )
+
+[node name="ZoomInAnimation" type="AnimationPlayer" parent="Head/Camera/machinegun"]
+anims/ZoomIn = SubResource( 3 )
+
+[node name="ZoomInAnimation2" type="AnimationPlayer" parent="Head/Camera/machinegun"]
+anims/ZoomIn = SubResource( 4 )
+anims/ZoomOut = SubResource( 5 )
+
+[node name="RayCast" type="RayCast" parent="Head/Camera"]
+enabled = true
+exclude_parent = false
+cast_to = Vector3( 0, 0, -200 )
+
+[node name="KnifeCast" type="RayCast" parent="Head/Camera"]
+enabled = true
+exclude_parent = false
+cast_to = Vector3( 0, 0, -10 )
+
+[node name="PistolCast" type="RayCast" parent="Head/Camera"]
+enabled = true
+exclude_parent = false
+cast_to = Vector3( 0, 0, -100 )
+
+[node name="CenterContainer" parent="Head/Camera" instance=ExtResource( 13 )]
+
+[node name="Death" type="Node" parent="Head/Camera"]
+
+[node name="DeathWindow" type="CenterContainer" parent="Head/Camera/Death"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button" type="Button" parent="Head/Camera/Death/DeathWindow"]
+margin_left = 516.0
+margin_top = 327.0
+margin_right = 763.0
+margin_bottom = 393.0
+custom_fonts/font = ExtResource( 16 )
+custom_colors/font_color = Color( 0.729412, 0.94902, 0.0901961, 1 )
+action_mode = 0
+text = "Respawn"
+
+[node name="DeathMessage" type="Label" parent="Head/Camera/Death"]
+visible = false
+margin_left = 246.0
+margin_top = 250.0
+margin_right = 1033.0
+margin_bottom = 310.0
+custom_fonts/font = ExtResource( 16 )
+custom_colors/font_color = Color( 1, 0, 0, 1 )
+text = "You are dead! Not big surprise!"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="WinScreen" type="Node" parent="Head/Camera"]
+
+[node name="WinMessage" type="Label" parent="Head/Camera/WinScreen"]
+visible = false
+margin_left = 246.0
+margin_top = 250.0
+margin_right = 1033.0
+margin_bottom = 310.0
+custom_fonts/font = ExtResource( 16 )
+custom_colors/font_color = Color( 0.00784314, 1, 0.0235294, 1 )
+text = "Level 1 Complete!"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="WinMenu" type="CenterContainer" parent="Head/Camera/WinScreen"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button2" type="Button" parent="Head/Camera/WinScreen/WinMenu"]
+margin_left = 470.0
+margin_top = 327.0
+margin_right = 810.0
+margin_bottom = 393.0
+custom_fonts/font = ExtResource( 16 )
+custom_colors/font_color_disabled = Color( 1, 0, 0, 1 )
+custom_colors/font_color = Color( 0.0196078, 0.952941, 1, 1 )
+text = "LEVEL MENU"
+
+[node name="NetLevelButtonContainer" type="Control" parent="Head/Camera/WinScreen"]
+visible = false
+margin_right = 40.0
+margin_bottom = 40.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="NextLevelButton" type="Button" parent="Head/Camera/WinScreen/NetLevelButtonContainer"]
+margin_left = 475.0
+margin_top = 420.0
+margin_right = 815.0
+margin_bottom = 486.0
+custom_fonts/font = ExtResource( 23 )
+text = "NEXT LEVEL"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PauseStuff" type="Control" parent="Head/Camera"]
+pause_mode = 2
+anchor_left = 1.0
+anchor_right = 1.0
+margin_right = 66.0
+margin_bottom = 66.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureButton" type="TextureButton" parent="Head/Camera/PauseStuff"]
+pause_mode = 2
+margin_left = -127.0
+margin_top = -1.0
+margin_right = 1.0
+margin_bottom = 127.0
+texture_normal = ExtResource( 18 )
+texture_pressed = ExtResource( 17 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="b_Pause1" type="Sprite" parent="Head/Camera/PauseStuff/TextureButton"]
+pause_mode = 2
+position = Vector2( 63, 65 )
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 19 )
+
+[node name="CenterContainer2" type="CenterContainer" parent="Head/Camera"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="BackToMain" type="Button" parent="Head/Camera/CenterContainer2"]
+pause_mode = 2
+margin_left = 537.0
+margin_top = 341.0
+margin_right = 742.0
+margin_bottom = 378.0
+custom_fonts/font = ExtResource( 23 )
+text = "Return to Main"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Knife" parent="Head/Camera" instance=ExtResource( 21 )]
+transform = Transform( 1.4735, 0, -0.115213, 0, 1.12, 0, 0.158538, 0, 1.07082, 0.07, -0.017, -0.087 )
+visible = false
+
+[node name="KnifeAnimation" type="AnimationPlayer" parent="Head/Camera/Knife"]
+anims/KnifeAnimation = SubResource( 6 )
+
+[node name="Pistol" parent="Head/Camera" instance=ExtResource( 20 )]
+transform = Transform( -1, 7.90251e-09, -1.50789e-07, 0, 0.99863, 0.052336, 1.50996e-07, 0.052336, -0.99863, 0.083, -0.06, -0.094 )
+
+[node name="arm1Pose" parent="Head/Camera/Pistol" instance=ExtResource( 6 )]
+transform = Transform( 0.011203, 2.77586e-11, -0.0089592, 1.45519e-10, 0.012, -1.62981e-09, 0.00430041, -1.16415e-10, 0.0233395, -0.0126556, 0.00878996, 0.0125301 )
+
+[node name="PistolAnimation" type="AnimationPlayer" parent="Head/Camera/Pistol"]
+anims/PistolReload = SubResource( 7 )
+
+[node name="FirePistol" type="AnimationPlayer" parent="Head/Camera/Pistol"]
+anims/FirePistol = SubResource( 8 )
+anims/PistolReload = SubResource( 9 )
+
+[node name="ZoomInPistol" type="AnimationPlayer" parent="Head/Camera/Pistol"]
+anims/FirePistol = SubResource( 10 )
+anims/PistolReload = SubResource( 11 )
+anims/ZoomInPis = SubResource( 12 )
+
+[node name="ZoomOutPistol" type="AnimationPlayer" parent="Head/Camera/Pistol"]
+anims/FirePistol = SubResource( 13 )
+anims/PistolReload = SubResource( 14 )
+anims/ZoomOutPis = SubResource( 15 )
+
+[node name="MuzzleFlashPistol" parent="Head/Camera/Pistol" instance=ExtResource( 8 )]
+transform = Transform( 0.01, -1.50996e-09, 1.50996e-09, -1.50996e-09, -0.01, -1.16415e-10, 1.50996e-09, 1.16415e-10, -0.01, -0.001, 0.012, 0.032 )
+visible = false
+
+[node name="Unpausesss" type="Control" parent="Head/Camera"]
+visible = false
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -640.0
+margin_top = -360.0
+margin_right = -600.0
+margin_bottom = -320.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="UnPause" type="Button" parent="Head/Camera/Unpausesss"]
+pause_mode = 2
+margin_left = -135.0
+margin_top = -100.0
+margin_right = 128.0
+margin_bottom = -34.0
+rect_clip_content = true
+custom_fonts/font = ExtResource( 16 )
+text = "RESUME"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CollisionShape" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, 0, 0 )
+shape = SubResource( 16 )
+
+[node name="MeshInstance" type="MeshInstance" parent="."]
+transform = Transform( 1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, 0, 0 )
+cast_shadow = 0
+mesh = SubResource( 17 )
+material/0 = null
+
+[node name="GunReload" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 9 )
+volume_db = 4.0
+
+[node name="jumpS" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 10 )
+volume_db = 1.0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/JumpSounds = SubResource( 18 )
+
+[node name="Music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 11 )
+volume_db = 1.0
+autoplay = true
+bus = "Music"
+
+[node name="GunShot" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 12 )
+volume_db = 1.0
+bus = "Gunshot"
+
+[node name="ZombieDamage" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 14 )
+volume_db = 1.0
+
+[node name="PlayerDamage" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 15 )
+volume_db = 1.0
+
+[node name="DamageBox" type="Area" parent="."]
+transform = Transform( 1.1, 0, 0, 0, 1, 0, 0, 0, 1.1, 0, 0, 0 )
+
+[node name="CollisionShape" type="CollisionShape" parent="DamageBox"]
+transform = Transform( 1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, 0, 0 )
+shape = SubResource( 19 )
+
+[node name="Swoosh" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 22 )
+volume_db = 1.0
+
+[node name="AlienHitSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 24 )
+volume_db = 1.0
+[connection signal="pressed" from="Head/Camera/Death/DeathWindow/Button" to="." method="_on_Button_pressed"]
+[connection signal="pressed" from="Head/Camera/WinScreen/WinMenu/Button2" to="." method="_on_Button2_pressed"]
+[connection signal="pressed" from="Head/Camera/WinScreen/NetLevelButtonContainer/NextLevelButton" to="." method="_on_NextLevelButton_pressed"]
+[connection signal="pressed" from="Head/Camera/PauseStuff/TextureButton" to="." method="_on_TextureButton_pressed"]
+[connection signal="pressed" from="Head/Camera/CenterContainer2/BackToMain" to="." method="_on_BackToMain_pressed"]
+[connection signal="pressed" from="Head/Camera/Unpausesss/UnPause" to="." method="_on_UnPause_pressed"]
+[connection signal="body_entered" from="DamageBox" to="." method="_on_DamageBox_body_entered"]
+[connection signal="body_exited" from="DamageBox" to="." method="_on_DamageBox_body_exited"]
