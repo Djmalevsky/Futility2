@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/qubodupRatPain.ogg-b6aa5b52a55c6960a599bef32c9ed327.oggstr"
+
+[deps]
+
+source_file="res://qubodupRatPain.ogg"
+dest_files=[ "res://.import/qubodupRatPain.ogg-b6aa5b52a55c6960a599bef32c9ed327.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

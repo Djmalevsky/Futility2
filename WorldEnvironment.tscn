@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Models/Sky-1.hdr" type="Texture" id=1]
+
+[sub_resource type="PanoramaSky" id=1]
+panorama = ExtResource( 1 )
+
+[sub_resource type="Environment" id=2]
+background_mode = 2
+background_sky = SubResource( 1 )
+ambient_light_color = Color( 0.952941, 0.576471, 0.576471, 1 )
+ambient_light_energy = 1.2
+tonemap_mode = 3
+tonemap_white = 4.0
+
+[node name="WorldEnvironment" type="WorldEnvironment"]
+environment = SubResource( 2 )
+
+[node name="DirectionalLight" type="DirectionalLight" parent="."]
+transform = Transform( -0.885105, -0.20174, -0.419393, -0.189882, -0.6662, 0.721196, -0.424894, 0.717968, 0.55135, -29.6932, 27.581, 38.2247 )
+light_color = Color( 0.976471, 0.513726, 0.333333, 1 )
+light_energy = 0.2
+shadow_enabled = true
