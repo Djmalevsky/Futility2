@@ -1,0 +1,194 @@
+[gd_scene load_steps=14 format=2]
+
+[ext_resource path="res://b_Restart.png" type="Texture" id=1]
+[ext_resource path="res://bullet.png" type="Texture" id=2]
+[ext_resource path="res://textures/norm.png" type="Texture" id=3]
+[ext_resource path="res://textures/lit.png" type="Texture" id=4]
+[ext_resource path="res://textures/arrow.png" type="Texture" id=5]
+[ext_resource path="res://ZoomIn.png" type="Texture" id=6]
+[ext_resource path="res://Scenes/desert_hawk.png" type="Texture" id=7]
+[ext_resource path="res://Models/VersionFont.tres" type="DynamicFont" id=8]
+
+[sub_resource type="CanvasItemMaterial" id=1]
+
+[sub_resource type="CanvasItemMaterial" id=2]
+next_pass = SubResource( 1 )
+
+[sub_resource type="CircleShape2D" id=3]
+radius = 47.5
+
+[sub_resource type="CircleShape2D" id=4]
+radius = 47.5
+
+[sub_resource type="CircleShape2D" id=5]
+radius = 47.5
+
+[node name="MarginContainer" type="MarginContainer"]
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -397.764
+margin_top = -752.865
+margin_right = 501.236
+margin_bottom = -313.598
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+margin_right = 899.0
+margin_bottom = 439.0
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Control" type="Control" parent="VBoxContainer"]
+margin_top = 219.0
+margin_right = 899.0
+margin_bottom = 219.0
+
+[node name="Control2" type="Control" parent="VBoxContainer/Control"]
+margin_left = 18.0
+margin_right = 1018.0
+margin_bottom = 54.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TouchScreenButton" type="TouchScreenButton" parent="VBoxContainer/Control/Control2"]
+material = SubResource( 2 )
+position = Vector2( 254.091, 267.297 )
+normal = ExtResource( 3 )
+pressed = ExtResource( 4 )
+shape = SubResource( 3 )
+action = "ui_up"
+visibility_mode = 1
+
+[node name="arrow" type="Sprite" parent="VBoxContainer/Control/Control2/TouchScreenButton"]
+position = Vector2( 64.137, 56 )
+rotation = -1.5708
+scale = Vector2( 0.1, 0.1 )
+texture = ExtResource( 5 )
+
+[node name="Control4" type="Control" parent="VBoxContainer/Control"]
+margin_left = 18.0
+margin_right = 1018.0
+margin_bottom = 54.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TouchScreenButton" type="TouchScreenButton" parent="VBoxContainer/Control/Control4"]
+position = Vector2( 165.751, 220.152 )
+normal = ExtResource( 3 )
+pressed = ExtResource( 4 )
+shape = SubResource( 4 )
+action = "Fire"
+visibility_mode = 1
+
+[node name="bullet" type="Sprite" parent="VBoxContainer/Control/Control4/TouchScreenButton"]
+position = Vector2( 63.5234, 60.4619 )
+scale = Vector2( 0.106349, 0.05 )
+texture = ExtResource( 2 )
+
+[node name="Control5" type="Control" parent="VBoxContainer/Control"]
+margin_left = 18.0
+margin_right = 1018.0
+margin_bottom = 54.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TouchScreenButton" type="TouchScreenButton" parent="VBoxContainer/Control/Control5"]
+position = Vector2( 248.186, 167.202 )
+normal = ExtResource( 3 )
+pressed = ExtResource( 4 )
+shape = SubResource( 5 )
+action = "Reload"
+visibility_mode = 1
+
+[node name="b_Restart" type="Sprite" parent="VBoxContainer/Control/Control5/TouchScreenButton"]
+position = Vector2( 64.1556, 61.4807 )
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 1 )
+
+[node name="Control6" type="Control" parent="VBoxContainer/Control"]
+margin_left = -300.0
+margin_top = 283.0
+margin_right = -245.0
+margin_bottom = 250.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TouchScreenButton" type="TouchScreenButton" parent="VBoxContainer/Control/Control6"]
+position = Vector2( 93.7224, 77.6215 )
+normal = ExtResource( 3 )
+pressed = ExtResource( 4 )
+shape = SubResource( 5 )
+action = "ZoomIn"
+visibility_mode = 1
+
+[node name="b_Restart" type="Sprite" parent="VBoxContainer/Control/Control6/TouchScreenButton"]
+position = Vector2( 63.279, 63.402 )
+scale = Vector2( 1.5, 1.5 )
+texture = ExtResource( 6 )
+
+[node name="Control7" type="Control" parent="VBoxContainer/Control"]
+margin_left = 82.175
+margin_top = 43.547
+margin_right = 137.175
+margin_bottom = 43.547
+size_flags_horizontal = 3
+size_flags_vertical = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TouchScreenButton" type="TouchScreenButton" parent="VBoxContainer/Control/Control7"]
+position = Vector2( 185.119, 25.1807 )
+scale = Vector2( 1, 0.941472 )
+normal = ExtResource( 3 )
+pressed = ExtResource( 4 )
+shape = SubResource( 5 )
+action = "Switch"
+visibility_mode = 1
+
+[node name="b_Restart" type="Sprite" parent="VBoxContainer/Control/Control7/TouchScreenButton"]
+position = Vector2( 64.539, 79.781 )
+scale = Vector2( 3, 3 )
+texture = ExtResource( 7 )
+
+[node name="b_Restart2" type="Sprite" parent="VBoxContainer/Control/Control7/TouchScreenButton"]
+position = Vector2( 63.6931, 42.7531 )
+scale = Vector2( 0.3, 0.3 )
+texture = ExtResource( 1 )
+
+[node name="AmmoPopup" type="Popup" parent="VBoxContainer/Control"]
+visible = true
+margin_left = -30.0
+margin_top = 420.0
+margin_right = 10.0
+margin_bottom = 460.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="VBoxContainer/Control/AmmoPopup"]
+margin_right = 389.0
+margin_bottom = 31.0
+custom_fonts/font = ExtResource( 8 )
+text = "Out of ammo! Switch weapons!"
+__meta__ = {
+"_edit_use_anchors_": false
+}

@@ -1,0 +1,46 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://textures/health.png" type="Texture" id=1]
+[ext_resource path="res://textures/glowCircle.png" type="Texture" id=2]
+
+[node name="Control" type="Control"]
+margin_right = 66.0
+margin_bottom = 67.0
+rect_scale = Vector2( 2, 2 )
+size_flags_horizontal = 3
+size_flags_vertical = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureProgress" type="TextureProgress" parent="."]
+margin_left = -6.72483
+margin_top = -3.55597
+margin_right = 1493.28
+margin_bottom = 1496.44
+rect_scale = Vector2( 0.05, 0.05 )
+value = 100.0
+texture_under = ExtResource( 2 )
+texture_progress = ExtResource( 2 )
+fill_mode = 4
+tint_under = Color( 1, 0.054902, 0, 1 )
+tint_progress = Color( 0.164706, 1, 0, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="TextureProgress"]
+margin_left = 610.476
+margin_top = 690.02
+margin_right = 652.476
+margin_bottom = 704.02
+rect_scale = Vector2( 10, 10 )
+custom_colors/font_color = Color( 0.992157, 0.00784314, 0.00784314, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="health" type="Sprite" parent="TextureProgress/Label"]
+position = Vector2( 45.5871, 7.30701 )
+scale = Vector2( 0.0977882, 0.130801 )
+texture = ExtResource( 1 )

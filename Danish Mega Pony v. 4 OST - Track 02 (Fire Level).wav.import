@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/Danish Mega Pony v. 4 OST - Track 02 (Fire Level).wav-851487e98f7b3b2feb6036aebae9478c.sample"
+
+[deps]
+
+source_file="res://Danish Mega Pony v. 4 OST - Track 02 (Fire Level).wav"
+dest_files=[ "res://.import/Danish Mega Pony v. 4 OST - Track 02 (Fire Level).wav-851487e98f7b3b2feb6036aebae9478c.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0
